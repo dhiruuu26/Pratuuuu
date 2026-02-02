@@ -10,88 +10,77 @@
         .heart-bg { position: absolute; top: -10%; color: #ff8a80; font-size: 20px; animation: fall linear infinite; z-index: -1; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
         .card { background: white; width: 85%; max-width: 380px; padding: 30px; border-radius: 30px; box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4); text-align: center; position: relative; border: 4px solid #fff; z-index: 10; }
-        .gif-container img { width: 180px; height: 180px; object-fit: contain; margin-bottom: 15px; border-radius: 15px; }
-        h1 { font-family: 'Indie Flower', cursive; color: #5a5a5a; font-size: 28px; margin: 10px 0; }
-        p { color: #888; line-height: 1.6; font-size: 15px; margin-bottom: 25px; }
+        .gif-container img { width: 160px; height: 160px; object-fit: contain; margin-bottom: 10px; border-radius: 15px; }
+        h1 { font-family: 'Indie Flower', cursive; color: #5a5a5a; font-size: 26px; margin: 10px 0; }
+        p { color: #888; line-height: 1.6; font-size: 15px; margin-bottom: 20px; }
         .btn { background: #ffb6c1; border: none; padding: 15px 30px; border-radius: 30px; cursor: pointer; color: white; font-weight: 600; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 10px rgba(255,182,193,0.5); }
-        .heart-option { background: #fffafb; border: 1px solid #ffb6c1; padding: 15px; border-radius: 15px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: center; align-items: center; }
-        .hidden-msg { display: none; font-weight: 600; color: #ff7081; }
+        .heart-option { background: #fffafb; border: 1px solid #ffb6c1; padding: 12px; border-radius: 15px; margin-bottom: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; min-height: 45px; }
+        .hidden-msg { display: none; font-weight: 600; color: #ff7081; animation: scaleIn 0.3s; }
         .slide { display: none; }
         .active { display: block; animation: fadeIn 0.6s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .letter { text-align: left; background: #fffafb; padding: 15px; border-radius: 15px; border: 1px dashed #ffb6c1; max-height: 200px; overflow-y: auto; color: #555; font-size: 14px; }
+        @keyframes scaleIn { from { transform: scale(0.8); } to { transform: scale(1); } }
+        .letter { text-align: left; background: #fffafb; padding: 15px; border-radius: 15px; border: 1px dashed #ffb6c1; max-height: 220px; overflow-y: auto; color: #555; font-size: 14px; }
     </style>
 </head>
 <body>
     <div id="hearts-container"></div>
-    
-    <audio id="bgMusic" preload="auto" loop>
-        <source src="https://www.chosic.com/wp-content/uploads/2021/04/And-So-It-Begins-Inspired-By-Crush-Music.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bgMusic" preload="auto" loop><source src="https://www.chosic.com/wp-content/uploads/2021/04/And-So-It-Begins-Inspired-By-Crush-Music.mp3" type="audio/mpeg"></audio>
 
     <div class="card">
         <div id="s1" class="slide active">
             <div class="gif-container">
-                <img src="https://media.tenor.com/79_uO_Pj99gAAAAi/bubu-dudu-bubu.gif" alt="Panda Hello">
+                <img src="https://media.tenor.com/79_uO_Pj99gAAAAi/bubu-dudu-bubu.gif" alt="Bubu Hello">
             </div>
-            <h1>Hey Pratuuu... 🐼</h1>
-            <p>I made something special. Please turn your volume up and tap below.</p>
-            <button class="btn" onclick="startApp()">Open it 💖</button>
+            <h1>For you my love</h1>
+            <p>Pratuuu, can we talk for a moment? There's something important I want to tell you.</p>
+            <button class="btn" onclick="startApp()">Continue 💖</button>
         </div>
 
         <div id="s2" class="slide">
             <div class="gif-container">
-                <img src="https://media.tenor.com/X-L_P9r7O68AAAAi/bubu-dudu-panda.gif" alt="Panda Hug">
+                <img src="https://media.tenor.com/X-L_P9r7O68AAAAi/bubu-dudu-panda.gif" alt="Sad Panda">
             </div>
-            <p>I know I've been a bit difficult lately, and I'm really sorry for hurting you.</p>
+            <p>I know I hurt you, and I've been feeling really bad about it...</p>
             <button class="btn" onclick="go(3)">Next 🐾</button>
         </div>
 
         <div id="s3" class="slide">
-            <h1>Pick a heart...</h1>
-            <div class="heart-option" onclick="reveal(this)"><span>❤️</span><div class="hidden-msg">I really need you</div></div>
-            <div class="heart-option" onclick="reveal(this)"><span>🐼</span><div class="hidden-msg">You're my favorite human</div></div>
-            <div class="heart-option" onclick="reveal(this)"><span>💖</span><div class="hidden-msg">I Love You, Pratu</div></div>
-            <button class="btn" onclick="go(4)" style="margin-top:10px">Final Note 📝</button>
+            <div class="gif-container">
+                <img src="https://media.tenor.com/S6-vQp-XitYAAAAi/bubu-dudu-sseeyall.gif" alt="Panda Thinking">
+            </div>
+            <h1>Little things...</h1>
+            <div class="heart-option" onclick="reveal(this)"><span>❤️</span><div class="hidden-msg">I need you</div></div>
+            <div class="heart-option" onclick="reveal(this)"><span>💜</span><div class="hidden-msg">I promise to be better</div></div>
+            <div class="heart-option" onclick="reveal(this)"><span>💖</span><div class="hidden-msg">I Love You</div></div>
+            <button class="btn" onclick="go(4)" style="margin-top:10px">My message <span>→</span></button>
         </div>
 
         <div id="s4" class="slide">
             <div class="gif-container">
                 <img src="https://media.tenor.com/k_f8FfVv_YIAAAAi/panda-love.gif" alt="Panda Love">
             </div>
+            <h1>From my heart...</h1>
             <div class="letter">
                 <p><strong>Dearest Pratuuu,</strong></p>
-                <p>I'm truly sorry for the upset I caused. I promise to be better and more understanding for you.</p>
-                <p>You mean the world to me. God bless you ❤️</p>
+                <p>For hurting you and making you feel upset, I'm truly sorry. I never wanted to be the reason behind your tears.</p>
+                <p>I know I am a bit more complicated than anyone you have ever met. You matter to me more than I always manage to show.</p>
+                <p>Few things can’t be expressed here like what you are meant to me. I promise to grow, to listen, and to be better for you every single day. Thank you for everything. We will make everything work properly as it was someday.</p>
+                <p>God bless you Pratu❤️</p>
                 <p align="right"><strong>- Dhiruuu</strong></p>
             </div>
+            <button class="btn" onclick="location.reload()" style="margin-top:10px">Replay ↺</button>
         </div>
     </div>
 
     <script>
         const music = document.getElementById("bgMusic");
-
-        function startApp() {
-            // This is the magic part that forces the music to play on iPhone
-            music.play().catch(error => console.log("Audio block bypass needed"));
-            go(2);
-        }
-
-        function go(id) {
-            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-            document.getElementById('s' + id).classList.add('active');
-        }
-
-        function reveal(el) {
-            el.querySelector('span').style.display = 'none';
-            el.querySelector('.hidden-msg').style.display = 'block';
-        }
-
+        function startApp() { music.play().catch(e => console.log("Audio started")); go(2); }
+        function go(id) { document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); document.getElementById('s' + id).classList.add('active'); }
+        function reveal(el) { el.querySelector('span').style.display = 'none'; el.querySelector('.hidden-msg').style.display = 'block'; el.style.background = 'white'; el.style.borderColor = '#ffb6c1'; }
         function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-bg');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
+            const heart = document.createElement('div'); heart.classList.add('heart-bg');
+            heart.innerHTML = '❤️'; heart.style.left = Math.random() * 100 + 'vw';
             heart.style.animationDuration = Math.random() * 3 + 2 + 's';
             document.getElementById('hearts-container').appendChild(heart);
             setTimeout(() => { heart.remove(); }, 5000);
