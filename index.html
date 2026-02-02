@@ -2,17 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For Pratuuu ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --dark-love: #0d0001; --wine: #2d0008; --rose: #ff4d6d; --soft: #ffb3c1; }
-        body { margin: 0; padding: 0; background: radial-gradient(circle at center, var(--wine) 0%, var(--dark-love) 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Quicksand', sans-serif; overflow: hidden; color: white; }
+        body { 
+            margin: 0; padding: 0; 
+            background: radial-gradient(circle at center, var(--wine) 0%, var(--dark-love) 100%); 
+            display: flex; justify-content: center; align-items: center; 
+            min-height: 100vh; font-family: 'Quicksand', sans-serif; 
+            overflow: hidden; color: white; touch-action: none;
+        }
         
-        .heart-bg { position: absolute; top: -10%; color: var(--rose); font-size: 20px; animation: fall linear infinite; z-index: -1; opacity: 0.3; }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-        
-        .card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); width: 85%; max-width: 360px; padding: 35px; border-radius: 50px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); text-align: center; border: 1px solid rgba(255, 255, 255, 0.08); z-index: 10; position: relative; }
+        /* Interactive Hearts Container */
+        #physics-container {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1;
+        }
+        .physics-heart {
+            position: absolute; font-size: 24px; user-select: none;
+            pointer-events: none; will-change: transform;
+        }
+
+        .card { 
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); 
+            width: 85%; max-width: 360px; padding: 35px; border-radius: 50px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8); text-align: center; 
+            border: 1px solid rgba(255, 255, 255, 0.08); z-index: 10; position: relative; 
+        }
         
         #musicToggle { position: absolute; top: 20px; right: 25px; background: none; border: 1px solid var(--rose); color: white; font-size: 18px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
 
@@ -29,7 +47,6 @@
         p { color: #e0e0e0; line-height: 1.6; font-size: 15px; margin-bottom: 25px; }
         
         .btn { background: linear-gradient(45deg, var(--rose), #ff8fa3); border: none; padding: 12px 35px; border-radius: 30px; cursor: pointer; color: white; font-weight: 600; font-size: 17px; box-shadow: 0 8px 15px rgba(255, 77, 109, 0.3); transition: 0.3s; }
-        .btn:active { transform: scale(0.95); }
         
         .heart-option { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 77, 109, 0.3); padding: 15px; border-radius: 15px; margin-bottom: 12px; cursor: pointer; }
         .hidden-msg { display: none; font-weight: 600; color: var(--soft); }
@@ -43,7 +60,8 @@
 </head>
 <body>
     <svg width="0" height="0"><defs><clipPath id="heartPath" clipPathUnits="objectBoundingBox"><path d="M0.5,1 C0.5,1 0,0.7 0,0.35 C0,0.15 0.15,0 0.32,0 C0.42,0 0.47,0.05 0.5,0.1 C0.53,0.05 0.58,0 0.68,0 C0.85,0 1,0.15 1,0.35 C1,0.7 0.5,1 0.5,1" /></clipPath></defs></svg>
-    <div id="hearts-container"></div>
+    
+    <div id="physics-container"></div>
     
     <audio id="bgMusic" loop>
         <source src="https://googleusercontent.com/file_content/1" type="audio/mpeg">
@@ -55,7 +73,7 @@
         <div id="s1" class="slide active">
             <img src="https://media.tenor.com/79_uO_Pj99gAAAAi/bubu-dudu-bubu.gif" class="panda-gif">
             <h1>Hi Pratuuu ❤️</h1>
-            <p>I made this specifically for you. Please turn up your volume before you continue...</p>
+            <p>I made this specifically for you. Shake your phone and tap Start...</p>
             <button class="btn" onclick="startApp()">Start ✨</button>
         </div>
 
@@ -104,17 +122,70 @@
     <script>
         const music = document.getElementById("bgMusic");
         const toggleBtn = document.getElementById("musicToggle");
-        function startApp() { music.play(); toggleBtn.innerText = "🔊"; go(2); }
+        const container = document.getElementById('physics-container');
+        const hearts = [];
+        let gravity = { x: 0, y: 0.5 };
+
+        // Request permission for iOS Motion
+        function startApp() { 
+            if (typeof DeviceMotionEvent.requestPermission === 'function') {
+                DeviceMotionEvent.requestPermission().then(response => {
+                    if (response == 'granted') {
+                        window.addEventListener('devicemotion', handleMotion);
+                    }
+                });
+            } else {
+                window.addEventListener('devicemotion', handleMotion);
+            }
+            music.play(); toggleBtn.innerText = "🔊"; go(2); 
+        }
+
+        function handleMotion(event) {
+            let ax = event.accelerationIncludingGravity.x || 0;
+            let ay = event.accelerationIncludingGravity.y || 0;
+            gravity.x = -ax * 0.1;
+            gravity.y = ay * 0.1;
+        }
+
+        function createHeart() {
+            const el = document.createElement('div');
+            el.className = 'physics-heart';
+            el.innerHTML = '❤️';
+            container.appendChild(el);
+            const heart = {
+                el, x: Math.random() * window.innerWidth, y: -20,
+                vx: (Math.random() - 0.5) * 5, vy: Math.random() * 5,
+                r: 12
+            };
+            hearts.push(heart);
+            if (hearts.length > 30) {
+                const old = hearts.shift();
+                container.removeChild(old.el);
+            }
+        }
+
+        function update() {
+            hearts.forEach(h => {
+                h.vx += gravity.x;
+                h.vy += gravity.y;
+                h.x += h.vx;
+                h.y += h.vy;
+                
+                // Bounce off walls
+                if (h.x < 0 || h.x > window.innerWidth - 20) h.vx *= -0.6;
+                if (h.y > window.innerHeight - 20) { h.y = window.innerHeight - 20; h.vy *= -0.4; }
+                
+                h.el.style.transform = `translate(${h.x}px, ${h.y}px)`;
+            });
+            requestAnimationFrame(update);
+        }
+
+        setInterval(createHeart, 600);
+        update();
+
         function toggleMusic() { if (music.paused) { music.play(); toggleBtn.innerText = "🔊"; } else { music.pause(); toggleBtn.innerText = "🔇"; } }
         function go(id) { document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); document.getElementById('s' + id).classList.add('active'); }
         function reveal(el) { el.querySelector('span').style.display = 'none'; el.querySelector('.hidden-msg').style.display = 'block'; }
-        function createHeart() {
-            const heart = document.createElement('div'); heart.classList.add('heart-bg'); heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw'; heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.getElementById('hearts-container').appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 5000);
-        }
-        setInterval(createHeart, 450);
     </script>
 </body>
 </html>
