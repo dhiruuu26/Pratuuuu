@@ -16,42 +16,46 @@
         
         #musicToggle { position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: white; font-size: 20px; cursor: pointer; border-radius: 50%; width: 40px; height: 40px; border: 1px solid var(--rose); }
 
-        /* MEDIUM HEART FRAME */
+        /* ELEGANT PHOTO FRAME */
         .heart-frame { 
             width: 200px; height: 180px; 
             margin: 0 auto 20px auto;
             background-color: var(--rose);
             clip-path: url(#heartPath);
-            box-shadow: 0 0 20px var(--rose);
+            box-shadow: 0 0 25px var(--rose);
+            border: 2px solid var(--soft);
         }
         .heart-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* COLLAGE STYLE */
-        .collage-container { display: flex; justify-content: center; align-items: center; height: 200px; position: relative; margin-bottom: 20px; }
-        .collage-pic { width: 130px; height: 160px; object-fit: cover; border-radius: 15px; border: 3px solid white; position: absolute; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .cp1 { transform: rotate(-10deg) translateX(-40px); z-index: 1; }
-        .cp2 { transform: rotate(10deg) translateX(40px); z-index: 2; }
+        /* ROMANTIC COLLAGE */
+        .collage-container { display: flex; justify-content: center; align-items: center; height: 220px; position: relative; margin-bottom: 20px; }
+        .collage-pic { width: 140px; height: 180px; object-fit: cover; border-radius: 15px; border: 4px solid white; position: absolute; box-shadow: 0 10px 30px rgba(0,0,0,0.8); transition: 0.5s; }
+        .cp1 { transform: rotate(-12deg) translateX(-45px); z-index: 1; }
+        .cp2 { transform: rotate(8deg) translateX(45px); z-index: 2; }
 
-        .panda-gif { width: 140px; height: 140px; margin-bottom: 15px; }
-        h1 { font-family: 'Indie Flower', cursive; color: var(--soft); font-size: 26px; margin: 10px 0; }
-        p { color: #f0f0f0; line-height: 1.6; font-size: 15px; margin-bottom: 20px; }
+        .panda-gif { width: 140px; height: 140px; margin-bottom: 15px; filter: drop-shadow(0 0 10px var(--rose)); }
+        h1 { font-family: 'Indie Flower', cursive; color: var(--soft); font-size: 28px; margin: 10px 0; }
+        p { color: #f0f0f0; line-height: 1.6; font-size: 16px; margin-bottom: 20px; }
         
-        .btn { background: linear-gradient(45deg, var(--rose), #ff8fa3); border: none; padding: 12px 35px; border-radius: 30px; cursor: pointer; color: white; font-weight: 600; font-size: 17px; box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3); transition: 0.3s; }
+        .btn { background: linear-gradient(45deg, var(--rose), #ff8fa3); border: none; padding: 14px 40px; border-radius: 35px; cursor: pointer; color: white; font-weight: 600; font-size: 18px; box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4); }
         
-        .heart-option { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 77, 109, 0.5); padding: 15px; border-radius: 20px; margin-bottom: 12px; cursor: pointer; transition: 0.3s; }
-        .hidden-msg { display: none; font-weight: 600; color: var(--soft); }
+        .heart-option { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 77, 109, 0.5); padding: 15px; border-radius: 20px; margin-bottom: 12px; cursor: pointer; }
+        .hidden-msg { display: none; font-weight: 600; color: var(--soft); font-size: 18px; }
         
         .slide { display: none; }
-        .active { display: block; animation: slideUp 0.6s ease-out; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .active { display: block; animation: slideUp 0.8s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
         
-        .letter { text-align: left; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 25px; border: 1px dashed var(--soft); max-height: 200px; overflow-y: auto; color: #eee; font-size: 14px; line-height: 1.6; }
+        .letter { text-align: left; background: rgba(0,0,0,0.4); padding: 22px; border-radius: 25px; border: 1px dashed var(--soft); max-height: 200px; overflow-y: auto; color: #eee; font-size: 14px; line-height: 1.7; border-left: 5px solid var(--rose); }
     </style>
 </head>
 <body>
     <svg width="0" height="0"><defs><clipPath id="heartPath" clipPathUnits="objectBoundingBox"><path d="M0.5,1 C0.5,1 0,0.7 0,0.35 C0,0.15 0.15,0 0.32,0 C0.42,0 0.47,0.05 0.5,0.1 C0.53,0.05 0.58,0 0.68,0 C0.85,0 1,0.15 1,0.35 C1,0.7 0.5,1 0.5,1" /></clipPath></defs></svg>
     <div id="hearts-container"></div>
-    <audio id="bgMusic" loop><source src="https://www.pagalworld.com.sb/files/download/id/2070" type="audio/mpeg"></audio>
+    
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="card">
         <button id="musicToggle" onclick="toggleMusic()">🔇</button>
@@ -59,7 +63,7 @@
         <div id="s1" class="slide active">
             <img src="https://media.tenor.com/79_uO_Pj99gAAAAi/bubu-dudu-bubu.gif" class="panda-gif">
             <h1>For you my love</h1>
-            <p>Pratuuu, I've put my heart into this. Please turn your volume up...</p>
+            <p>Pratuuu, please turn your volume up and tap below. I have something to show you...</p>
             <button class="btn" onclick="startApp()">Open ❤️</button>
         </div>
 
@@ -79,25 +83,24 @@
         </div>
 
         <div id="s4" class="slide">
-            <img src="https://media.tenor.com/k_f8FfVv_YIAAAAi/panda-love.gif" style="width: 80px; margin-bottom: 10px;">
             <div class="collage-container">
                 <img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg" class="collage-pic cp1">
                 <img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg" class="collage-pic cp2">
             </div>
             <h1>Our Memories</h1>
-            <button class="btn" onclick="go(5)">My Message 📝</button>
+            <p>I found a love for me...</p>
+            <button class="btn" onclick="go(5)">Read My Letter 📝</button>
         </div>
 
         <div id="s5" class="slide">
             <div class="letter">
                 <p><strong>Dearest Pratuuu,</strong></p>
                 <p>For hurting you and making you feel upset, I'm truly sorry. I never wanted to be the reason behind your tears.</p>
-                <p>I know I am a bit more complicated than anyone you have ever met. You matter to me more than I always manage to show.</p>
-                <p>I promise to grow, to listen, and to be better for you every single day. Thank you for everything. We will make everything work properly as it was someday.</p>
+                <p>I know I am a bit more complicated than anyone you have ever met. You matter to me more than I always manage to show. I promise to grow, to listen, and to be better for you every single day. Thank you for everything. We will make everything work properly as it was someday.</p>
                 <p>God bless you Pratu❤️</p>
                 <p align="right"><strong>- Dhiruuu</strong></p>
             </div>
-            <button class="btn" onclick="location.reload()" style="margin-top:15px">Replay ↺</button>
+            <button class="btn" onclick="location.reload()" style="margin-top:20px">Replay ↺</button>
         </div>
     </div>
 
