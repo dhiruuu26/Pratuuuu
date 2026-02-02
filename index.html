@@ -9,18 +9,24 @@
         body { margin: 0; padding: 0; background-color: #fce4ec; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Quicksand', sans-serif; overflow: hidden; }
         .heart-bg { position: absolute; top: -10%; color: #ff8a80; font-size: 20px; animation: fall linear infinite; z-index: -1; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-        .card { background: white; width: 85%; max-width: 380px; padding: 30px; border-radius: 30px; box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4); text-align: center; position: relative; border: 4px solid #fff; z-index: 10; }
-        .gif-container img { width: 160px; height: 160px; object-fit: contain; margin-bottom: 10px; border-radius: 15px; }
-        h1 { font-family: 'Indie Flower', cursive; color: #5a5a5a; font-size: 26px; margin: 10px 0; }
-        p { color: #888; line-height: 1.6; font-size: 15px; margin-bottom: 20px; }
-        .btn { background: #ffb6c1; border: none; padding: 15px 30px; border-radius: 30px; cursor: pointer; color: white; font-weight: 600; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 10px rgba(255,182,193,0.5); }
-        .heart-option { background: #fffafb; border: 1px solid #ffb6c1; padding: 12px; border-radius: 15px; margin-bottom: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; min-height: 45px; }
+        .card { background: white; width: 85%; max-width: 380px; padding: 25px; border-radius: 30px; box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4); text-align: center; position: relative; border: 4px solid #fff; z-index: 10; }
+        .gif-container img { width: 140px; height: 140px; object-fit: contain; margin-bottom: 10px; border-radius: 15px; }
+        
+        /* Couple Photos Styling */
+        .photo-container { display: flex; justify-content: center; margin-bottom: 15px; position: relative; height: 110px; }
+        .couple-pic { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: absolute; }
+        .pic1 { left: 25%; transform: rotate(-10deg); z-index: 2; border-color: #ffb6c1; }
+        .pic2 { right: 25%; transform: rotate(10deg); z-index: 1; border-color: #fce4ec; }
+
+        h1 { font-family: 'Indie Flower', cursive; color: #5a5a5a; font-size: 24px; margin: 10px 0; }
+        p { color: #888; line-height: 1.5; font-size: 14px; margin-bottom: 15px; }
+        .btn { background: #ffb6c1; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; color: white; font-weight: 600; font-size: 15px; transition: 0.3s; box-shadow: 0 4px 10px rgba(255,182,193,0.5); }
+        .heart-option { background: #fffafb; border: 1px solid #ffb6c1; padding: 12px; border-radius: 15px; margin-bottom: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; min-height: 40px; }
         .hidden-msg { display: none; font-weight: 600; color: #ff7081; animation: scaleIn 0.3s; }
         .slide { display: none; }
         .active { display: block; animation: fadeIn 0.6s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes scaleIn { from { transform: scale(0.8); } to { transform: scale(1); } }
-        .letter { text-align: left; background: #fffafb; padding: 15px; border-radius: 15px; border: 1px dashed #ffb6c1; max-height: 220px; overflow-y: auto; color: #555; font-size: 14px; }
+        .letter { text-align: left; background: #fffafb; padding: 15px; border-radius: 15px; border: 1px dashed #ffb6c1; max-height: 200px; overflow-y: auto; color: #555; font-size: 13px; }
     </style>
 </head>
 <body>
@@ -57,10 +63,11 @@
         </div>
 
         <div id="s4" class="slide">
-            <div class="gif-container">
-                <img src="https://media.tenor.com/k_f8FfVv_YIAAAAi/panda-love.gif" alt="Panda Love">
+            <div class="photo-container">
+                <img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg" class="couple-pic pic1" alt="Us 1">
+                <img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg" class="couple-pic pic2" alt="Us 2">
             </div>
-            <h1>From my heart...</h1>
+            
             <div class="letter">
                 <p><strong>Dearest Pratuuu,</strong></p>
                 <p>For hurting you and making you feel upset, I'm truly sorry. I never wanted to be the reason behind your tears.</p>
@@ -75,7 +82,7 @@
 
     <script>
         const music = document.getElementById("bgMusic");
-        function startApp() { music.play().catch(e => console.log("Audio started")); go(2); }
+        function startApp() { music.play().catch(e => {}); go(2); }
         function go(id) { document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); document.getElementById('s' + id).classList.add('active'); }
         function reveal(el) { el.querySelector('span').style.display = 'none'; el.querySelector('.hidden-msg').style.display = 'block'; el.style.background = 'white'; el.style.borderColor = '#ffb6c1'; }
         function createHeart() {
