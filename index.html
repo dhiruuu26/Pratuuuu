@@ -6,37 +6,40 @@
     <title>For Pratuuu ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --dark-love: #2c0005; --wine: #800020; --rose: #ff4d6d; --soft: #ffb3c1; }
+        :root { --dark-love: #1a0003; --wine: #4d0012; --rose: #ff4d6d; --soft: #ffb3c1; }
         body { margin: 0; padding: 0; background: radial-gradient(circle, var(--wine), var(--dark-love)); display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Quicksand', sans-serif; overflow: hidden; color: white; }
-        .heart-bg { position: absolute; top: -10%; color: var(--rose); font-size: 20px; animation: fall linear infinite; z-index: -1; opacity: 0.6; }
+        .heart-bg { position: absolute; top: -10%; color: var(--rose); font-size: 20px; animation: fall linear infinite; z-index: -1; opacity: 0.5; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
         
-        .card { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); width: 90%; max-width: 400px; padding: 25px; border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; border: 2px solid rgba(255, 77, 109, 0.3); z-index: 10; position: relative; }
+        .card { background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(15px); width: 90%; max-width: 400px; padding: 25px; border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); text-align: center; border: 1px solid rgba(255, 77, 109, 0.4); z-index: 10; position: relative; }
         
-        #musicToggle { position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 20px; cursor: pointer; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+        #musicToggle { position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 22px; cursor: pointer; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; }
 
-        /* BIG HEART FRAMES */
+        .panda-gif { width: 160px; height: 160px; margin-bottom: 10px; border-radius: 20px; }
+        
+        /* THE BIG HEARTS */
         .photo-container { display: flex; flex-direction: column; align-items: center; gap: 20px; margin: 20px 0; }
         .heart-frame { 
-            width: 240px; height: 220px; 
+            width: 250px; height: 230px; 
             background-color: var(--rose);
             clip-path: url(#heartPath);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.5);
+            border: 3px solid var(--soft);
         }
         .heart-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        .panda-gif { width: 160px; height: 160px; margin-bottom: 10px; }
-        h1 { font-family: 'Indie Flower', cursive; color: var(--soft); font-size: 28px; margin: 10px 0; }
-        p { color: #f0f0f0; line-height: 1.6; font-size: 15px; margin-bottom: 20px; }
-        .btn { background: var(--rose); border: none; padding: 15px 40px; border-radius: 30px; cursor: pointer; color: white; font-weight: 600; font-size: 18px; }
+        h1 { font-family: 'Indie Flower', cursive; color: var(--soft); font-size: 30px; margin: 15px 0; }
+        p { color: #f0f0f0; line-height: 1.6; font-size: 16px; margin-bottom: 20px; }
+        .btn { background: var(--rose); border: none; padding: 15px 45px; border-radius: 35px; cursor: pointer; color: white; font-weight: 600; font-size: 19px; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4); }
+        
         .heart-option { background: rgba(255,255,255,0.1); border: 1px solid var(--rose); padding: 15px; border-radius: 20px; margin-bottom: 12px; cursor: pointer; }
         .hidden-msg { display: none; font-weight: 600; color: var(--soft); font-size: 18px; }
         
         .slide { display: none; }
         .active { display: block; animation: fadeIn 0.8s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         
-        .letter { text-align: left; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 20px; border: 1px dashed var(--soft); max-height: 200px; overflow-y: auto; color: #eee; font-size: 14px; margin-top: 15px; border-left: 4px solid var(--rose); }
+        .letter { text-align: left; background: rgba(0,0,0,0.4); padding: 22px; border-radius: 25px; border: 1px dashed var(--soft); max-height: 180px; overflow-y: auto; color: #eee; font-size: 14px; margin-top: 15px; border-left: 5px solid var(--rose); }
     </style>
 </head>
 <body>
@@ -49,7 +52,10 @@
     </svg>
 
     <div id="hearts-container"></div>
-    <audio id="bgMusic" loop><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
+    
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://www.pagalworld.com.sb/files/download/id/2070" type="audio/mpeg">
+    </audio>
 
     <div class="card">
         <button id="musicToggle" onclick="toggleMusic()">🔇</button>
@@ -78,13 +84,13 @@
 
         <div id="s4" class="slide">
             <div class="photo-container">
-                <div class="heart-frame"><img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg"></div>
-                <div class="heart-frame"><img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg"></div>
+                <div class="heart-frame"><img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg" alt="Us"></div>
+                <div class="heart-frame"><img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg" alt="Us"></div>
             </div>
             <div class="letter">
                 <p><strong>Dearest Pratuuu,</strong></p>
                 <p>For hurting you and making you feel upset, I'm truly sorry. I never wanted to be the reason behind your tears.</p>
-                <p>I know I am a bit more complicated than anyone you have ever met. You matter to me more than I always manage to show. I promise to grow, to listen, and to be better for you every single day. Thank you for everything. We will make everything work properly as it was someday.</p>
+                <p>I know I am a bit more complicated than anyone you have ever met. You matter to me more than I always manage to show. I promise to grow, to listen, and to be better for you every single day. Thank you for everything.</p>
                 <p>God bless you Pratu❤️</p>
                 <p align="right"><strong>- Dhiruuu</strong></p>
             </div>
@@ -95,11 +101,27 @@
         const music = document.getElementById("bgMusic");
         const toggleBtn = document.getElementById("musicToggle");
 
-        function startApp() { music.play(); toggleBtn.innerText = "🔊"; go(2); }
-        function toggleMusic() { if (music.paused) { music.play(); toggleBtn.innerText = "🔊"; } else { music.pause(); toggleBtn.innerText = "🔇"; } }
-        function go(id) { document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); document.getElementById('s' + id).classList.add('active'); }
-        function reveal(el) { el.querySelector('span').style.display = 'none'; el.querySelector('.hidden-msg').style.display = 'block'; }
-        
+        function startApp() { 
+            music.play().catch(e => console.log("Music play failed - requires user tap")); 
+            toggleBtn.innerText = "🔊";
+            go(2); 
+        }
+
+        function toggleMusic() {
+            if (music.paused) { music.play(); toggleBtn.innerText = "🔊"; } 
+            else { music.pause(); toggleBtn.innerText = "🔇"; }
+        }
+
+        function go(id) { 
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); 
+            document.getElementById('s' + id).classList.add('active'); 
+        }
+
+        function reveal(el) { 
+            el.querySelector('span').style.display = 'none'; 
+            el.querySelector('.hidden-msg').style.display = 'block'; 
+        }
+
         function createHeart() {
             const heart = document.createElement('div'); heart.classList.add('heart-bg'); heart.innerHTML = '❤️';
             heart.style.left = Math.random() * 100 + 'vw'; heart.style.animationDuration = Math.random() * 3 + 2 + 's';
