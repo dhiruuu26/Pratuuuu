@@ -6,23 +6,13 @@
     <title>For Pratuuu ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --dark-love: #0d0001; --wine: #2d0008; --plum: #4d0012; --rose: #ff4d6d; --piggy: #ffc2d1; }
-        
+        :root { --dark-love: #120005; --wine: #3d0019; --rose: #ff4d6d; --soft: #ffb3c1; --piggy: #ffc2d1; }
         body { 
             margin: 0; padding: 0; 
-            /* Liquid Background Animation */
-            background: linear-gradient(315deg, var(--dark-love), var(--wine), var(--plum), var(--dark-love));
-            background-size: 400% 400%;
-            animation: liquidBg 15s ease infinite;
+            background: radial-gradient(circle at center, var(--wine) 0%, var(--dark-love) 100%); 
             display: flex; justify-content: center; align-items: center; 
             min-height: 100vh; font-family: 'Quicksand', sans-serif; 
             overflow: hidden; color: white; touch-action: none;
-        }
-
-        @keyframes liquidBg {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
         
         #physics-container {
@@ -30,39 +20,39 @@
             pointer-events: none; z-index: 1;
         }
         .physics-obj {
-            position: absolute; font-size: 30px; user-select: none;
+            position: absolute; font-size: 32px; user-select: none;
             pointer-events: none; will-change: transform;
-            filter: drop-shadow(0 0 10px rgba(255, 194, 209, 0.3));
+            filter: drop-shadow(0 0 8px rgba(255, 194, 209, 0.4));
         }
 
         .card { 
-            background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(25px); 
-            width: 82%; max-width: 350px; padding: 35px; border-radius: 45px; 
-            box-shadow: 0 40px 80px rgba(0,0,0,0.9); text-align: center; 
-            border: 1px solid rgba(255, 194, 209, 0.15); z-index: 10; position: relative; 
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); 
+            width: 85%; max-width: 360px; padding: 35px; border-radius: 50px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8); text-align: center; 
+            border: 1px solid rgba(255, 179, 193, 0.2); z-index: 10; position: relative; 
         }
         
-        #musicToggle { position: absolute; top: 20px; right: 25px; background: none; border: 1px solid var(--rose); color: white; font-size: 16px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; opacity: 0.6; }
+        #musicToggle { position: absolute; top: 20px; right: 25px; background: none; border: 1px solid var(--rose); color: white; font-size: 18px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
 
-        .heart-frame { width: 170px; height: 155px; margin: 0 auto 20px auto; background-color: var(--rose); clip-path: url(#heartPath); border: 2px solid var(--piggy); box-shadow: 0 0 25px rgba(255, 77, 109, 0.4); }
+        .heart-frame { width: 180px; height: 165px; margin: 0 auto 25px auto; background-color: var(--rose); clip-path: url(#heartPath); border: 2px solid var(--piggy); box-shadow: 0 0 30px rgba(255, 77, 109, 0.5); }
         .heart-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        .collage-container { display: flex; justify-content: center; align-items: center; height: 180px; position: relative; margin-bottom: 25px; }
-        .collage-pic { width: 115px; height: 145px; object-fit: cover; border-radius: 15px; border: 3px solid var(--piggy); position: absolute; box-shadow: 0 15px 30px rgba(0,0,0,0.7); }
+        .collage-container { display: flex; justify-content: center; align-items: center; height: 180px; position: relative; margin-bottom: 30px; }
+        .collage-pic { width: 120px; height: 150px; object-fit: cover; border-radius: 15px; border: 3px solid var(--piggy); position: absolute; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
         .cp1 { transform: rotate(-8deg) translateX(-35px); }
         .cp2 { transform: rotate(5deg) translateX(35px); z-index: 2; }
 
-        .panda-gif { width: 120px; height: 120px; margin-bottom: 15px; filter: drop-shadow(0 0 12px var(--plum)); }
-        h1 { font-family: 'Indie Flower', cursive; color: var(--piggy); font-size: 26px; margin: 10px 0; }
-        p { color: #fce4ec; line-height: 1.6; font-size: 14px; margin-bottom: 25px; opacity: 0.9; }
+        .panda-gif { width: 130px; height: 130px; margin-bottom: 20px; filter: drop-shadow(0 0 10px var(--piggy)); }
+        h1 { font-family: 'Indie Flower', cursive; color: var(--piggy); font-size: 28px; margin: 10px 0; }
+        p { color: #fce4ec; line-height: 1.6; font-size: 15px; margin-bottom: 25px; }
         
-        .btn { background: linear-gradient(45deg, var(--rose), var(--piggy)); border: none; padding: 12px 35px; border-radius: 30px; cursor: pointer; color: #3d0019; font-weight: 700; font-size: 16px; transition: 0.3s; box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3); }
+        .btn { background: linear-gradient(45deg, var(--rose), var(--piggy)); border: none; padding: 12px 35px; border-radius: 30px; cursor: pointer; color: #3d0019; font-weight: 700; font-size: 17px; box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4); }
         
         .slide { display: none; }
-        .active { display: block; animation: liquidFade 1s ease-out; }
-        @keyframes liquidFade { from { opacity: 0; filter: blur(10px); transform: scale(0.9); } to { opacity: 1; filter: blur(0); transform: scale(1); } }
+        .active { display: block; animation: floatIn 0.8s ease-out; }
+        @keyframes floatIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        .letter { text-align: left; background: rgba(0,0,0,0.4); padding: 22px; border-radius: 25px; border: 1px dashed var(--piggy); max-height: 180px; overflow-y: auto; color: #fff; font-size: 13.5px; line-height: 1.7; }
+        .letter { text-align: left; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 25px; border: 1px dashed var(--piggy); max-height: 200px; overflow-y: auto; color: #fff; font-size: 14px; line-height: 1.8; }
     </style>
 </head>
 <body>
@@ -74,8 +64,8 @@
         <button id="musicToggle" onclick="toggleMusic()">🔇</button>
         <div id="s1" class="slide active">
             <img src="https://media.tenor.com/79_uO_Pj99gAAAAi/bubu-dudu-bubu.gif" class="panda-gif">
-            <h1>For Pratuuu 🐷🌸</h1>
-            <p>A little liquid magic for you. Tilt your phone to swirl the emojis. Tap Start...</p>
+            <h1>Hi Pratuuu 🐷🌸</h1>
+            <p>Tilt your phone to glide the piggies! Tap Start for your surprise...</p>
             <button class="btn" onclick="startApp()">Start ✨</button>
         </div>
         
@@ -83,7 +73,7 @@
         <div id="s3" class="slide"><div class="heart-frame"><img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg"></div><p>I'm still learning, but I promise I'm trying to be better for us every single day.</p><button class="btn" onclick="go(4)">Continue ✨</button></div>
         <div id="s4" class="slide"><h1>Three things...</h1><p>❤️ I need you<br>🌸 I appreciate you<br>🐷 I love you</p><button class="btn" onclick="go(5)">Next 📸</button></div>
         <div id="s5" class="slide"><div class="collage-container"><img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg" class="collage-pic cp1"><img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg" class="collage-pic cp2"></div><h1>Our Journey</h1><button class="btn" onclick="go(6)">My Message 📝</button></div>
-        <div id="s6" class="slide"><div class="letter"><p><strong>Dearest Pratuuu,</strong></p><p>I'm truly sorry for everything. Thank you for staying. I hope this makes you smile. God bless you ❤️</p><p align="right"><strong>- Dhiruuu</strong></p></div><button class="btn" onclick="location.reload()" style="margin-top:20px">Replay ↺</button></div>
+        <div id="s6" class="slide"><div class="letter"><p><strong>Dearest Pratuuu,</strong></p><p>I'm truly sorry for everything. Thank you for staying. God bless you ❤️</p><p align="right"><strong>- Dhiruuu</strong></p></div><button class="btn" onclick="location.reload()" style="margin-top:20px">Replay ↺</button></div>
     </div>
 
     <script>
@@ -91,7 +81,7 @@
         const toggleBtn = document.getElementById("musicToggle");
         const container = document.getElementById('physics-container');
         const objects = [];
-        let gravity = { x: 0, y: 0 }; 
+        let gravity = { x: 0, y: 1.5 }; 
 
         function startApp() { 
             if (typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -101,47 +91,41 @@
         }
 
         function handleMotion(e) {
-            gravity.x = -(e.accelerationIncludingGravity.x || 0) * 1.8;
-            gravity.y = (e.accelerationIncludingGravity.y || 0) * 1.8;
+            let ax = e.accelerationIncludingGravity.x || 0;
+            let ay = e.accelerationIncludingGravity.y || 0;
+            gravity.x = -ax * 1.5; // High sensitivity
+            gravity.y = ay * 1.5;
         }
 
         function createObj() {
             const el = document.createElement('div');
             el.className = 'physics-obj';
-            const icons = ['🐷', '🌸', '❤️', '💖', '💝', '🌸', '🐷'];
+            // PIGS, HEARTS, AND PINK FLOWERS
+            const icons = ['🐷', '🌸', '❤️', '💖', '🐷', '🌸'];
             el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
             container.appendChild(el);
-            const obj = { el, x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, vx: 0, vy: 0 };
+            const obj = { el, x: Math.random() * window.innerWidth, y: -50, vx: 0, vy: 0, friction: 0.92 }; // 0.92 = Glide effect
             objects.push(obj);
-            if (objects.length > 25) container.removeChild(objects.shift().el);
+            if (objects.length > 30) container.removeChild(objects.shift().el);
         }
 
         function update() {
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-
             objects.forEach(o => {
-                // Anti-clumping: Gentle pull to center
-                const dx = centerX - o.x;
-                const dy = centerY - o.y;
-                o.vx += dx * 0.005 + gravity.x;
-                o.vy += dy * 0.005 + gravity.y;
-
-                o.vx *= 0.94; o.vy *= 0.94; // Liquid glide
+                o.vx += gravity.x; o.vy += gravity.y;
+                o.vx *= o.friction; o.vy *= o.friction; // Water-like glide
                 o.x += o.vx; o.y += o.vy;
                 
-                // Elastic screen bounce
-                if (o.x < 10) { o.x = 10; o.vx *= -0.6; }
-                if (o.x > window.innerWidth - 40) { o.x = window.innerWidth - 40; o.vx *= -0.6; }
-                if (o.y < 10) { o.y = 10; o.vy *= -0.6; }
-                if (o.y > window.innerHeight - 40) { o.y = window.innerHeight - 40; o.vy *= -0.6; }
+                if (o.x < 0) { o.x = 0; o.vx *= -0.5; }
+                if (o.x > window.innerWidth - 40) { o.x = window.innerWidth - 40; o.vx *= -0.5; }
+                if (o.y < 0) { o.y = 0; o.vy *= -0.5; }
+                if (o.y > window.innerHeight - 40) { o.y = window.innerHeight - 40; o.vy *= -0.5; }
                 
                 o.el.style.transform = `translate(${o.x}px, ${o.y}px)`;
             });
             requestAnimationFrame(update);
         }
 
-        setInterval(createObj, 1000);
+        setInterval(createObj, 700);
         update();
         function toggleMusic() { if (music.paused) { music.play(); toggleBtn.innerText = "🔊"; } else { music.pause(); toggleBtn.innerText = "🔇"; } }
         function go(id) { document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); document.getElementById('s' + id).classList.add('active'); }
