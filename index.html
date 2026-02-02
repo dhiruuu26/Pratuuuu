@@ -6,96 +6,95 @@
     <title>For Pratuuu ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --dark-love: #1a0003; --wine: #4d0012; --rose: #ff4d6d; --soft: #ffb3c1; }
+        :root { --dark-love: #0d0001; --wine: #2d0008; --rose: #ff4d6d; --soft: #ffb3c1; }
         body { margin: 0; padding: 0; background: radial-gradient(circle at center, var(--wine) 0%, var(--dark-love) 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Quicksand', sans-serif; overflow: hidden; color: white; }
         
-        .heart-bg { position: absolute; top: -10%; color: var(--rose); font-size: 20px; animation: fall linear infinite; z-index: -1; opacity: 0.4; }
+        .heart-bg { position: absolute; top: -10%; color: var(--rose); font-size: 20px; animation: fall linear infinite; z-index: -1; opacity: 0.3; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
         
-        .card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); width: 85%; max-width: 380px; padding: 30px; border-radius: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.6); text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); z-index: 10; position: relative; }
+        .card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); width: 85%; max-width: 360px; padding: 35px; border-radius: 50px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); text-align: center; border: 1px solid rgba(255, 255, 255, 0.08); z-index: 10; position: relative; }
         
-        #musicToggle { position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: white; font-size: 20px; cursor: pointer; border-radius: 50%; width: 40px; height: 40px; border: 1px solid var(--rose); }
+        #musicToggle { position: absolute; top: 20px; right: 25px; background: none; border: 1px solid var(--rose); color: white; font-size: 18px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
 
-        .heart-frame { 
-            width: 200px; height: 180px; 
-            margin: 0 auto 20px auto;
-            background-color: var(--rose);
-            clip-path: url(#heartPath);
-            box-shadow: 0 0 25px var(--rose);
-            border: 2px solid var(--soft);
-        }
+        .heart-frame { width: 180px; height: 165px; margin: 0 auto 25px auto; background-color: var(--rose); clip-path: url(#heartPath); box-shadow: 0 0 30px rgba(255, 77, 109, 0.4); }
         .heart-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        .collage-container { display: flex; justify-content: center; align-items: center; height: 220px; position: relative; margin-bottom: 20px; }
-        .collage-pic { width: 140px; height: 180px; object-fit: cover; border-radius: 15px; border: 4px solid white; position: absolute; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .cp1 { transform: rotate(-12deg) translateX(-45px); z-index: 1; }
-        .cp2 { transform: rotate(8deg) translateX(45px); z-index: 2; }
+        .collage-container { display: flex; justify-content: center; align-items: center; height: 180px; position: relative; margin-bottom: 30px; }
+        .collage-pic { width: 120px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid white; position: absolute; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        .cp1 { transform: rotate(-8deg) translateX(-35px); }
+        .cp2 { transform: rotate(5deg) translateX(35px); z-index: 2; }
 
-        .panda-gif { width: 140px; height: 140px; margin-bottom: 15px; filter: drop-shadow(0 0 10px var(--rose)); }
-        h1 { font-family: 'Indie Flower', cursive; color: var(--soft); font-size: 28px; margin: 10px 0; }
-        p { color: #f0f0f0; line-height: 1.6; font-size: 16px; margin-bottom: 20px; }
+        .panda-gif { width: 130px; height: 130px; margin-bottom: 20px; filter: drop-shadow(0 0 8px var(--rose)); }
+        h1 { font-family: 'Indie Flower', cursive; color: var(--soft); font-size: 26px; margin: 10px 0; }
+        p { color: #e0e0e0; line-height: 1.6; font-size: 15px; margin-bottom: 25px; }
         
-        .btn { background: linear-gradient(45deg, var(--rose), #ff8fa3); border: none; padding: 14px 40px; border-radius: 35px; cursor: pointer; color: white; font-weight: 600; font-size: 18px; box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4); }
+        .btn { background: linear-gradient(45deg, var(--rose), #ff8fa3); border: none; padding: 12px 35px; border-radius: 30px; cursor: pointer; color: white; font-weight: 600; font-size: 17px; box-shadow: 0 8px 15px rgba(255, 77, 109, 0.3); transition: 0.3s; }
+        .btn:active { transform: scale(0.95); }
         
-        .heart-option { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 77, 109, 0.5); padding: 15px; border-radius: 20px; margin-bottom: 12px; cursor: pointer; }
-        .hidden-msg { display: none; font-weight: 600; color: var(--soft); font-size: 18px; }
+        .heart-option { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 77, 109, 0.3); padding: 15px; border-radius: 15px; margin-bottom: 12px; cursor: pointer; }
+        .hidden-msg { display: none; font-weight: 600; color: var(--soft); }
         
         .slide { display: none; }
-        .active { display: block; animation: slideUp 0.8s ease-out; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .active { display: block; animation: fadeIn 0.8s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         
-        .letter { text-align: left; background: rgba(0,0,0,0.4); padding: 22px; border-radius: 25px; border: 1px dashed var(--soft); max-height: 200px; overflow-y: auto; color: #eee; font-size: 14px; line-height: 1.7; border-left: 5px solid var(--rose); }
+        .letter { text-align: left; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 20px; border: 1px solid rgba(255, 179, 193, 0.2); max-height: 200px; overflow-y: auto; color: #ddd; font-size: 13px; line-height: 1.8; }
     </style>
 </head>
 <body>
     <svg width="0" height="0"><defs><clipPath id="heartPath" clipPathUnits="objectBoundingBox"><path d="M0.5,1 C0.5,1 0,0.7 0,0.35 C0,0.15 0.15,0 0.32,0 C0.42,0 0.47,0.05 0.5,0.1 C0.53,0.05 0.58,0 0.68,0 C0.85,0 1,0.15 1,0.35 C1,0.7 0.5,1 0.5,1" /></clipPath></defs></svg>
     <div id="hearts-container"></div>
     
-    <audio id="bgMusic" loop preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        </audio>
+    <audio id="bgMusic" loop>
+        <source src="https://googleusercontent.com/file_content/1" type="audio/mpeg">
+    </audio>
 
     <div class="card">
         <button id="musicToggle" onclick="toggleMusic()">🔇</button>
 
         <div id="s1" class="slide active">
             <img src="https://media.tenor.com/79_uO_Pj99gAAAAi/bubu-dudu-bubu.gif" class="panda-gif">
-            <h1>For you my love</h1>
-            <p>Pratuuu, please turn your volume up and tap below. This is for you...</p>
-            <button class="btn" onclick="startApp()">Open ❤️</button>
+            <h1>Hi Pratuuu ❤️</h1>
+            <p>I made this specifically for you. Please turn up your volume before you continue...</p>
+            <button class="btn" onclick="startApp()">Start ✨</button>
         </div>
 
         <div id="s2" class="slide">
             <div class="heart-frame"><img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg"></div>
             <p>I know I haven't been the easiest to love lately, and for that, I am so sorry...</p>
-            <button class="btn" onclick="go(3)">Continue 🐾</button>
+            <button class="btn" onclick="go(3)">Next 🐾</button>
         </div>
 
         <div id="s3" class="slide">
             <div class="heart-frame"><img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg"></div>
-            <h1>Little things...</h1>
-            <div class="heart-option" onclick="reveal(this)"><span>❤️</span><div class="hidden-msg">I need you</div></div>
-            <div class="heart-option" onclick="reveal(this)"><span>💜</span><div class="hidden-msg">I promise to be better</div></div>
-            <div class="heart-option" onclick="reveal(this)"><span>💖</span><div class="hidden-msg">I Love You</div></div>
-            <button class="btn" onclick="go(4)">Next ✨</button>
+            <p>I'm still learning, but I promise I'm trying to be better for us every single day.</p>
+            <button class="btn" onclick="go(4)">Continue ✨</button>
         </div>
 
         <div id="s4" class="slide">
+            <h1>Three things...</h1>
+            <div class="heart-option" onclick="reveal(this)"><span>❤️</span><div class="hidden-msg">I need you</div></div>
+            <div class="heart-option" onclick="reveal(this)"><span>💜</span><div class="hidden-msg">I appreciate you</div></div>
+            <div class="heart-option" onclick="reveal(this)"><span>💖</span><div class="hidden-msg">I love you</div></div>
+            <button class="btn" onclick="go(5)">Next 📸</button>
+        </div>
+
+        <div id="s5" class="slide">
             <div class="collage-container">
                 <img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg" class="collage-pic cp1">
                 <img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg" class="collage-pic cp2">
             </div>
-            <h1>Our Memories</h1>
-            <p>"I found a love for me..."</p>
-            <button class="btn" onclick="go(5)">Read My Letter 📝</button>
+            <h1>Our Journey</h1>
+            <p>Everything will work out properly one day. I truly believe that.</p>
+            <button class="btn" onclick="go(6)">My Message 📝</button>
         </div>
 
-        <div id="s5" class="slide">
+        <div id="s6" class="slide">
             <div class="letter">
                 <p><strong>Dearest Pratuuu,</strong></p>
-                <p>For hurting you and making you feel upset, I'm truly sorry. I never wanted to be the reason behind your tears.</p>
-                <p>I know I am a bit more complicated than anyone you have ever met. You matter to me more than I always manage to show. I promise to grow, to listen, and to be better for you every single day. Thank you for everything. We will make everything work properly as it was someday.</p>
-                <p>God bless you Pratu❤️</p>
+                <p>I'm truly sorry for the times I've hurt you. It was never my intention to be the reason for your tears.</p>
+                <p>I know I can be complicated, but you matter to me more than I often show. I'm committed to listening more and growing alongside you.</p>
+                <p>Thank you for staying. God bless you ❤️</p>
                 <p align="right"><strong>- Dhiruuu</strong></p>
             </div>
             <button class="btn" onclick="location.reload()" style="margin-top:20px">Replay ↺</button>
@@ -105,33 +104,17 @@
     <script>
         const music = document.getElementById("bgMusic");
         const toggleBtn = document.getElementById("musicToggle");
-
-        // Direct link to "Perfect" - extracted from stable source
-        const musicSource = "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Impact_and_Romantic/Kevin_MacLeod_-_04_-_Heartwarming.mp3"; 
-        // Note: Real Ed Sheeran links are often blocked by copyrights. 
-        // If the above link isn't Ed Sheeran, I'll show you how to swap it with a local file.
-
-        function startApp() { 
-            music.src = "https://www.pagalworld.com.sb/files/download/id/3536"; // Attempted direct Ed Sheeran link
-            music.play().then(() => {
-                toggleBtn.innerText = "🔊";
-            }).catch(e => {
-                console.log("Audio load error");
-            });
-            go(2); 
-        }
-
+        function startApp() { music.play(); toggleBtn.innerText = "🔊"; go(2); }
         function toggleMusic() { if (music.paused) { music.play(); toggleBtn.innerText = "🔊"; } else { music.pause(); toggleBtn.innerText = "🔇"; } }
         function go(id) { document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); document.getElementById('s' + id).classList.add('active'); }
         function reveal(el) { el.querySelector('span').style.display = 'none'; el.querySelector('.hidden-msg').style.display = 'block'; }
-        
         function createHeart() {
             const heart = document.createElement('div'); heart.classList.add('heart-bg'); heart.innerHTML = '❤️';
             heart.style.left = Math.random() * 100 + 'vw'; heart.style.animationDuration = Math.random() * 3 + 2 + 's';
             document.getElementById('hearts-container').appendChild(heart);
             setTimeout(() => { heart.remove(); }, 5000);
         }
-        setInterval(createHeart, 400);
+        setInterval(createHeart, 450);
     </script>
 </body>
 </html>
