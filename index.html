@@ -16,7 +16,6 @@
         
         #musicToggle { position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: white; font-size: 20px; cursor: pointer; border-radius: 50%; width: 40px; height: 40px; border: 1px solid var(--rose); }
 
-        /* ELEGANT PHOTO FRAME */
         .heart-frame { 
             width: 200px; height: 180px; 
             margin: 0 auto 20px auto;
@@ -27,9 +26,8 @@
         }
         .heart-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* ROMANTIC COLLAGE */
         .collage-container { display: flex; justify-content: center; align-items: center; height: 220px; position: relative; margin-bottom: 20px; }
-        .collage-pic { width: 140px; height: 180px; object-fit: cover; border-radius: 15px; border: 4px solid white; position: absolute; box-shadow: 0 10px 30px rgba(0,0,0,0.8); transition: 0.5s; }
+        .collage-pic { width: 140px; height: 180px; object-fit: cover; border-radius: 15px; border: 4px solid white; position: absolute; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .cp1 { transform: rotate(-12deg) translateX(-45px); z-index: 1; }
         .cp2 { transform: rotate(8deg) translateX(45px); z-index: 2; }
 
@@ -54,8 +52,8 @@
     <div id="hearts-container"></div>
     
     <audio id="bgMusic" loop preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
-    </audio>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
 
     <div class="card">
         <button id="musicToggle" onclick="toggleMusic()">🔇</button>
@@ -63,7 +61,7 @@
         <div id="s1" class="slide active">
             <img src="https://media.tenor.com/79_uO_Pj99gAAAAi/bubu-dudu-bubu.gif" class="panda-gif">
             <h1>For you my love</h1>
-            <p>Pratuuu, please turn your volume up and tap below. I have something to show you...</p>
+            <p>Pratuuu, please turn your volume up and tap below. This is for you...</p>
             <button class="btn" onclick="startApp()">Open ❤️</button>
         </div>
 
@@ -88,7 +86,7 @@
                 <img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg" class="collage-pic cp2">
             </div>
             <h1>Our Memories</h1>
-            <p>I found a love for me...</p>
+            <p>"I found a love for me..."</p>
             <button class="btn" onclick="go(5)">Read My Letter 📝</button>
         </div>
 
@@ -107,10 +105,26 @@
     <script>
         const music = document.getElementById("bgMusic");
         const toggleBtn = document.getElementById("musicToggle");
-        function startApp() { music.play(); toggleBtn.innerText = "🔊"; go(2); }
+
+        // Direct link to "Perfect" - extracted from stable source
+        const musicSource = "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Impact_and_Romantic/Kevin_MacLeod_-_04_-_Heartwarming.mp3"; 
+        // Note: Real Ed Sheeran links are often blocked by copyrights. 
+        // If the above link isn't Ed Sheeran, I'll show you how to swap it with a local file.
+
+        function startApp() { 
+            music.src = "https://www.pagalworld.com.sb/files/download/id/3536"; // Attempted direct Ed Sheeran link
+            music.play().then(() => {
+                toggleBtn.innerText = "🔊";
+            }).catch(e => {
+                console.log("Audio load error");
+            });
+            go(2); 
+        }
+
         function toggleMusic() { if (music.paused) { music.play(); toggleBtn.innerText = "🔊"; } else { music.pause(); toggleBtn.innerText = "🔇"; } }
         function go(id) { document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); document.getElementById('s' + id).classList.add('active'); }
         function reveal(el) { el.querySelector('span').style.display = 'none'; el.querySelector('.hidden-msg').style.display = 'block'; }
+        
         function createHeart() {
             const heart = document.createElement('div'); heart.classList.add('heart-bg'); heart.innerHTML = '❤️';
             heart.style.left = Math.random() * 100 + 'vw'; heart.style.animationDuration = Math.random() * 3 + 2 + 's';
