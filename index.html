@@ -6,53 +6,49 @@
     <title>For Pratuuu ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --dark-love: #120005; --wine: #3d0019; --rose: #ff4d6d; --soft: #ffb3c1; --piggy: #ffc2d1; }
+        :root { --dark-love: #0d0001; --wine: #2d0008; --plum: #4d0012; --rose: #ff4d6d; --piggy: #ffc2d1; }
+        
         body { 
             margin: 0; padding: 0; 
-            background: radial-gradient(circle at center, var(--wine) 0%, var(--dark-love) 100%); 
+            background: linear-gradient(315deg, var(--dark-love), var(--wine), var(--plum), var(--dark-love));
+            background-size: 400% 400%;
+            animation: liquidBg 15s ease infinite;
             display: flex; justify-content: center; align-items: center; 
             min-height: 100vh; font-family: 'Quicksand', sans-serif; 
             overflow: hidden; color: white; touch-action: none;
         }
-        
-        #physics-container {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 1;
-        }
-        .physics-obj {
-            position: absolute; font-size: 32px; user-select: none;
-            pointer-events: none; will-change: transform;
-            filter: drop-shadow(0 0 8px rgba(255, 194, 209, 0.4));
-        }
 
-        .card { 
-            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); 
-            width: 85%; max-width: 360px; padding: 35px; border-radius: 50px; 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8); text-align: center; 
-            border: 1px solid rgba(255, 179, 193, 0.2); z-index: 10; position: relative; 
-        }
+        @keyframes liquidBg { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         
-        #musicToggle { position: absolute; top: 20px; right: 25px; background: none; border: 1px solid var(--rose); color: white; font-size: 18px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
+        #physics-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .physics-obj { position: absolute; font-size: 30px; user-select: none; pointer-events: none; will-change: transform; filter: drop-shadow(0 0 10px rgba(255, 194, 209, 0.3)); }
 
-        .heart-frame { width: 180px; height: 165px; margin: 0 auto 25px auto; background-color: var(--rose); clip-path: url(#heartPath); border: 2px solid var(--piggy); box-shadow: 0 0 30px rgba(255, 77, 109, 0.5); }
+        .card { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(25px); width: 82%; max-width: 350px; padding: 35px; border-radius: 45px; box-shadow: 0 40px 80px rgba(0,0,0,0.9); text-align: center; border: 1px solid rgba(255, 194, 209, 0.15); z-index: 10; position: relative; }
+        
+        #musicToggle { position: absolute; top: 20px; right: 25px; background: none; border: 1px solid var(--rose); color: white; font-size: 16px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; opacity: 0.6; }
+
+        .heart-frame { width: 170px; height: 155px; margin: 0 auto 20px auto; background-color: var(--rose); clip-path: url(#heartPath); border: 2px solid var(--piggy); box-shadow: 0 0 25px rgba(255, 77, 109, 0.4); }
         .heart-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        .collage-container { display: flex; justify-content: center; align-items: center; height: 180px; position: relative; margin-bottom: 30px; }
-        .collage-pic { width: 120px; height: 150px; object-fit: cover; border-radius: 15px; border: 3px solid var(--piggy); position: absolute; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+        .collage-container { display: flex; justify-content: center; align-items: center; height: 180px; position: relative; margin-bottom: 25px; }
+        .collage-pic { width: 115px; height: 145px; object-fit: cover; border-radius: 15px; border: 3px solid var(--piggy); position: absolute; box-shadow: 0 15px 30px rgba(0,0,0,0.7); }
         .cp1 { transform: rotate(-8deg) translateX(-35px); }
         .cp2 { transform: rotate(5deg) translateX(35px); z-index: 2; }
 
-        .panda-gif { width: 130px; height: 130px; margin-bottom: 20px; filter: drop-shadow(0 0 10px var(--piggy)); }
-        h1 { font-family: 'Indie Flower', cursive; color: var(--piggy); font-size: 28px; margin: 10px 0; }
-        p { color: #fce4ec; line-height: 1.6; font-size: 15px; margin-bottom: 25px; }
+        .panda-gif { width: 120px; height: 120px; margin-bottom: 15px; filter: drop-shadow(0 0 12px var(--plum)); }
+        h1 { font-family: 'Indie Flower', cursive; color: var(--piggy); font-size: 26px; margin: 10px 0; }
+        p { color: #fce4ec; line-height: 1.6; font-size: 14px; margin-bottom: 25px; }
         
-        .btn { background: linear-gradient(45deg, var(--rose), var(--piggy)); border: none; padding: 12px 35px; border-radius: 30px; cursor: pointer; color: #3d0019; font-weight: 700; font-size: 17px; box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4); }
+        .heart-option { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 77, 109, 0.5); padding: 15px; border-radius: 20px; margin-bottom: 12px; cursor: pointer; transition: 0.3s; }
+        .hidden-msg { display: none; font-weight: 600; color: var(--piggy); font-size: 18px; }
+
+        .btn { background: linear-gradient(45deg, var(--rose), var(--piggy)); border: none; padding: 12px 35px; border-radius: 30px; cursor: pointer; color: #3d0019; font-weight: 700; font-size: 16px; box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3); }
         
         .slide { display: none; }
-        .active { display: block; animation: floatIn 0.8s ease-out; }
-        @keyframes floatIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .active { display: block; animation: liquidFade 1s ease-out; }
+        @keyframes liquidFade { from { opacity: 0; filter: blur(10px); transform: scale(0.9); } to { opacity: 1; filter: blur(0); transform: scale(1); } }
         
-        .letter { text-align: left; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 25px; border: 1px dashed var(--piggy); max-height: 200px; overflow-y: auto; color: #fff; font-size: 14px; line-height: 1.8; }
+        .letter { text-align: left; background: rgba(0,0,0,0.4); padding: 22px; border-radius: 25px; border: 1px dashed var(--piggy); max-height: 180px; overflow-y: auto; color: #fff; font-size: 13.5px; line-height: 1.7; }
     </style>
 </head>
 <body>
@@ -64,16 +60,46 @@
         <button id="musicToggle" onclick="toggleMusic()">🔇</button>
         <div id="s1" class="slide active">
             <img src="https://media.tenor.com/79_uO_Pj99gAAAAi/bubu-dudu-bubu.gif" class="panda-gif">
-            <h1>Hi Pratuuu 🐷🌸</h1>
-            <p>Tilt your phone to glide the piggies! Tap Start for your surprise...</p>
-            <button class="btn" onclick="startApp()">Start ✨</button>
+            <h1>For Pratuuu 🐷🌸</h1>
+            <p>I've put my heart into this. Please turn your volume up...</p>
+            <button class="btn" onclick="startApp()">Open ❤️</button>
         </div>
         
-        <div id="s2" class="slide"><div class="heart-frame"><img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg"></div><p>I know I haven't been the easiest to love lately, and for that, I am so sorry...</p><button class="btn" onclick="go(3)">Next 🐾</button></div>
-        <div id="s3" class="slide"><div class="heart-frame"><img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg"></div><p>I'm still learning, but I promise I'm trying to be better for us every single day.</p><button class="btn" onclick="go(4)">Continue ✨</button></div>
-        <div id="s4" class="slide"><h1>Three things...</h1><p>❤️ I need you<br>🌸 I appreciate you<br>🐷 I love you</p><button class="btn" onclick="go(5)">Next 📸</button></div>
-        <div id="s5" class="slide"><div class="collage-container"><img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg" class="collage-pic cp1"><img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg" class="collage-pic cp2"></div><h1>Our Journey</h1><button class="btn" onclick="go(6)">My Message 📝</button></div>
-        <div id="s6" class="slide"><div class="letter"><p><strong>Dearest Pratuuu,</strong></p><p>I'm truly sorry for everything. Thank you for staying. God bless you ❤️</p><p align="right"><strong>- Dhiruuu</strong></p></div><button class="btn" onclick="location.reload()" style="margin-top:20px">Replay ↺</button></div>
+        <div id="s2" class="slide">
+            <div class="heart-frame"><img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg"></div>
+            <p>I know I haven't been the easiest to love lately, and for that, I am so sorry...</p>
+            <button class="btn" onclick="go(3)">Continue 🐾</button>
+        </div>
+
+        <div id="s3" class="slide">
+            <div class="heart-frame"><img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg"></div>
+            <h1>Little things...</h1>
+            <div class="heart-option" onclick="reveal(this)"><span>❤️</span><div class="hidden-msg">I need you</div></div>
+            <div class="heart-option" onclick="reveal(this)"><span>💜</span><div class="hidden-msg">I promise to be better</div></div>
+            <div class="heart-option" onclick="reveal(this)"><span>💖</span><div class="hidden-msg">I Love You</div></div>
+            <button class="btn" onclick="go(4)">Next ✨</button>
+        </div>
+
+        <div id="s4" class="slide">
+            <div class="collage-container">
+                <img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg" class="collage-pic cp1">
+                <img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg" class="collage-pic cp2">
+            </div>
+            <h1>Our Memories</h1>
+            <button class="btn" onclick="go(5)">My Message 📝</button>
+        </div>
+
+        <div id="s5" class="slide">
+            <div class="letter">
+                <p><strong>Dearest Pratuuu,</strong></p>
+                <p>For hurting you and making you feel upset, I'm truly sorry. I never wanted to be the reason behind your tears.</p>
+                <p>I know I am a bit more complicated than anyone you have ever met. You matter to me more than I always manage to show.</p>
+                <p>I promise to grow, to listen, and to be better for you every single day. Thank you for everything. We will make everything work properly as it was someday.</p>
+                <p>God bless you Pratu❤️</p>
+                <p align="right"><strong>- Dhiruuu</strong></p>
+            </div>
+            <button class="btn" onclick="location.reload()" style="margin-top:20px">Replay ↺</button>
+        </div>
     </div>
 
     <script>
@@ -81,7 +107,7 @@
         const toggleBtn = document.getElementById("musicToggle");
         const container = document.getElementById('physics-container');
         const objects = [];
-        let gravity = { x: 0, y: 1.5 }; 
+        let gravity = { x: 0, y: 0 }; 
 
         function startApp() { 
             if (typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -91,44 +117,43 @@
         }
 
         function handleMotion(e) {
-            let ax = e.accelerationIncludingGravity.x || 0;
-            let ay = e.accelerationIncludingGravity.y || 0;
-            gravity.x = -ax * 1.5; // High sensitivity
-            gravity.y = ay * 1.5;
+            gravity.x = -(e.accelerationIncludingGravity.x || 0) * 1.8;
+            gravity.y = (e.accelerationIncludingGravity.y || 0) * 1.8;
         }
 
         function createObj() {
             const el = document.createElement('div');
             el.className = 'physics-obj';
-            // PIGS, HEARTS, AND PINK FLOWERS
-            const icons = ['🐷', '🌸', '❤️', '💖', '🐷', '🌸'];
+            const icons = ['🐷', '🌸', '❤️', '💖', '💝', '🌸', '🐷'];
             el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
             container.appendChild(el);
-            const obj = { el, x: Math.random() * window.innerWidth, y: -50, vx: 0, vy: 0, friction: 0.92 }; // 0.92 = Glide effect
+            const obj = { el, x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, vx: 0, vy: 0 };
             objects.push(obj);
-            if (objects.length > 30) container.removeChild(objects.shift().el);
+            if (objects.length > 25) container.removeChild(objects.shift().el);
         }
 
         function update() {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
             objects.forEach(o => {
-                o.vx += gravity.x; o.vy += gravity.y;
-                o.vx *= o.friction; o.vy *= o.friction; // Water-like glide
+                const dx = centerX - o.x; const dy = centerY - o.y;
+                o.vx += dx * 0.005 + gravity.x; o.vy += dy * 0.005 + gravity.y;
+                o.vx *= 0.94; o.vy *= 0.94;
                 o.x += o.vx; o.y += o.vy;
-                
-                if (o.x < 0) { o.x = 0; o.vx *= -0.5; }
-                if (o.x > window.innerWidth - 40) { o.x = window.innerWidth - 40; o.vx *= -0.5; }
-                if (o.y < 0) { o.y = 0; o.vy *= -0.5; }
-                if (o.y > window.innerHeight - 40) { o.y = window.innerHeight - 40; o.vy *= -0.5; }
-                
+                if (o.x < 10) { o.x = 10; o.vx *= -0.6; }
+                if (o.x > window.innerWidth - 40) { o.x = window.innerWidth - 40; o.vx *= -0.6; }
+                if (o.y < 10) { o.y = 10; o.vy *= -0.6; }
+                if (o.y > window.innerHeight - 40) { o.y = window.innerHeight - 40; o.vy *= -0.6; }
                 o.el.style.transform = `translate(${o.x}px, ${o.y}px)`;
             });
             requestAnimationFrame(update);
         }
 
-        setInterval(createObj, 700);
+        setInterval(createObj, 1000);
         update();
         function toggleMusic() { if (music.paused) { music.play(); toggleBtn.innerText = "🔊"; } else { music.pause(); toggleBtn.innerText = "🔇"; } }
         function go(id) { document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); document.getElementById('s' + id).classList.add('active'); }
+        function reveal(el) { el.querySelector('span').style.display = 'none'; el.querySelector('.hidden-msg').style.display = 'block'; }
     </script>
 </body>
 </html>
