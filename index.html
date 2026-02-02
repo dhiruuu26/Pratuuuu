@@ -10,31 +10,46 @@
         body { margin: 0; padding: 0; background: radial-gradient(circle, var(--wine), var(--dark-love)); display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Quicksand', sans-serif; overflow: hidden; color: white; }
         .heart-bg { position: absolute; top: -10%; color: var(--rose); font-size: 20px; animation: fall linear infinite; z-index: -1; opacity: 0.6; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-        .card { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); width: 90%; max-width: 400px; padding: 25px; border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; border: 2px solid rgba(255, 77, 109, 0.3); z-index: 10; position: relative; }
-        #musicToggle { position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 20px; cursor: pointer; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
         
-        /* GIF STYLING */
-        .panda-gif { width: 150px; height: 150px; margin-bottom: 15px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); }
+        .card { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); width: 90%; max-width: 400px; padding: 25px; border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; border: 2px solid rgba(255, 77, 109, 0.3); z-index: 10; position: relative; }
+        
+        #musicToggle { position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 20px; cursor: pointer; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
 
+        /* BIG HEART FRAMES */
         .photo-container { display: flex; flex-direction: column; align-items: center; gap: 20px; margin: 20px 0; }
-        .heart-frame { width: 220px; height: 200px; background-color: var(--rose); clip-path: url(#heartPath); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .heart-frame { 
+            width: 240px; height: 220px; 
+            background-color: var(--rose);
+            clip-path: url(#heartPath);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
         .heart-frame img { width: 100%; height: 100%; object-fit: cover; }
-        h1 { font-family: 'Indie Flower', cursive; color: var(--soft); font-size: 30px; margin: 15px 0; }
-        p { color: #f0f0f0; line-height: 1.6; font-size: 16px; margin-bottom: 20px; }
+
+        .panda-gif { width: 160px; height: 160px; margin-bottom: 10px; }
+        h1 { font-family: 'Indie Flower', cursive; color: var(--soft); font-size: 28px; margin: 10px 0; }
+        p { color: #f0f0f0; line-height: 1.6; font-size: 15px; margin-bottom: 20px; }
         .btn { background: var(--rose); border: none; padding: 15px 40px; border-radius: 30px; cursor: pointer; color: white; font-weight: 600; font-size: 18px; }
         .heart-option { background: rgba(255,255,255,0.1); border: 1px solid var(--rose); padding: 15px; border-radius: 20px; margin-bottom: 12px; cursor: pointer; }
         .hidden-msg { display: none; font-weight: 600; color: var(--soft); font-size: 18px; }
+        
         .slide { display: none; }
         .active { display: block; animation: fadeIn 0.8s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
         .letter { text-align: left; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 20px; border: 1px dashed var(--soft); max-height: 200px; overflow-y: auto; color: #eee; font-size: 14px; margin-top: 15px; border-left: 4px solid var(--rose); }
     </style>
 </head>
 <body>
-    <svg width="0" height="0"><defs><clipPath id="heartPath" clipPathUnits="objectBoundingBox"><path d="M0.5,1 C0.5,1 0,0.7 0,0.35 C0,0.15 0.15,0 0.32,0 C0.42,0 0.47,0.05 0.5,0.1 C0.53,0.05 0.58,0 0.68,0 C0.85,0 1,0.15 1,0.35 C1,0.7 0.5,1 0.5,1" /></clipPath></defs></svg>
+    <svg width="0" height="0">
+      <defs>
+        <clipPath id="heartPath" clipPathUnits="objectBoundingBox">
+          <path d="M0.5,1 C0.5,1 0,0.7 0,0.35 C0,0.15 0.15,0 0.32,0 C0.42,0 0.47,0.05 0.5,0.1 C0.53,0.05 0.58,0 0.68,0 C0.85,0 1,0.15 1,0.35 C1,0.7 0.5,1 0.5,1" />
+        </clipPath>
+      </defs>
+    </svg>
 
     <div id="hearts-container"></div>
-    <audio id="bgMusic" loop preload="auto"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
+    <audio id="bgMusic" loop><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
 
     <div class="card">
         <button id="musicToggle" onclick="toggleMusic()">🔇</button>
@@ -42,7 +57,7 @@
         <div id="s1" class="slide active">
             <img src="https://media.tenor.com/79_uO_Pj99gAAAAi/bubu-dudu-bubu.gif" class="panda-gif">
             <h1>For you my love</h1>
-            <p>Pratuuu, I've put my heart into this. Tap below and turn your volume up...</p>
+            <p>Pratuuu, I've put my heart into this. Please turn your volume up...</p>
             <button class="btn" onclick="startApp()">Open ❤️</button>
         </div>
 
@@ -62,7 +77,6 @@
         </div>
 
         <div id="s4" class="slide">
-            <img src="https://media.tenor.com/k_f8FfVv_YIAAAAi/panda-love.gif" style="width: 80px;">
             <div class="photo-container">
                 <div class="heart-frame"><img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg"></div>
                 <div class="heart-frame"><img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg"></div>
@@ -80,10 +94,12 @@
     <script>
         const music = document.getElementById("bgMusic");
         const toggleBtn = document.getElementById("musicToggle");
+
         function startApp() { music.play(); toggleBtn.innerText = "🔊"; go(2); }
         function toggleMusic() { if (music.paused) { music.play(); toggleBtn.innerText = "🔊"; } else { music.pause(); toggleBtn.innerText = "🔇"; } }
         function go(id) { document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); document.getElementById('s' + id).classList.add('active'); }
         function reveal(el) { el.querySelector('span').style.display = 'none'; el.querySelector('.hidden-msg').style.display = 'block'; }
+        
         function createHeart() {
             const heart = document.createElement('div'); heart.classList.add('heart-bg'); heart.innerHTML = '❤️';
             heart.style.left = Math.random() * 100 + 'vw'; heart.style.animationDuration = Math.random() * 3 + 2 + 's';
