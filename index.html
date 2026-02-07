@@ -2,161 +2,136 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For Pratuuu ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Happy Rose Day!</title>
     <style>
-        :root { --dark-love: #0d0001; --wine: #2d0008; --plum: #4d0012; --rose: #ff4d6d; --piggy: #ffc2d1; --mitsuri: #ffb7c5; }
-        
-        body { 
-            margin: 0; padding: 0; 
-            background: linear-gradient(315deg, var(--dark-love), var(--wine), var(--plum), var(--dark-love));
-            background-size: 400% 400%;
-            animation: liquidBg 15s ease infinite;
-            display: flex; justify-content: center; align-items: center; 
-            min-height: 100vh; font-family: 'Quicksand', sans-serif; 
-            overflow: hidden; color: white; touch-action: none;
+        body {
+            background-color: #fff5f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        @keyframes liquidBg { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        
-        #physics-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .physics-obj { position: absolute; font-size: 30px; user-select: none; pointer-events: none; will-change: transform; filter: drop-shadow(0 0 10px rgba(255, 194, 209, 0.3)); }
+        .garden {
+            position: relative;
+            width: 200px;
+            height: 300px;
+        }
 
-        .card { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(25px); width: 82%; max-width: 350px; padding: 35px; border-radius: 45px; box-shadow: 0 40px 80px rgba(0,0,0,0.9); text-align: center; border: 1px solid rgba(255, 194, 209, 0.15); z-index: 10; position: relative; }
-        
-        #musicToggle { position: absolute; top: 20px; right: 25px; background: none; border: 1px solid var(--rose); color: white; font-size: 16px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; opacity: 0.6; }
+        /* The Pot */
+        .pot {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 80px;
+            background: #8b4513;
+            clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
+            z-index: 2;
+        }
 
-        .anime-frame { width: 100%; border-radius: 25px; border: 2px solid var(--mitsuri); margin-bottom: 20px; box-shadow: 0 0 20px rgba(255, 183, 197, 0.4); }
-        .heart-frame { width: 170px; height: 155px; margin: 0 auto 20px auto; background-color: var(--rose); clip-path: url(#heartPath); border: 2px solid var(--piggy); box-shadow: 0 0 25px rgba(255, 77, 109, 0.4); }
-        .heart-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .pot-top {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 20px;
+            background: #a0522d;
+            border-radius: 5px;
+            z-index: 3;
+        }
 
-        .collage-container { display: flex; justify-content: center; align-items: center; height: 180px; position: relative; margin-bottom: 25px; }
-        .collage-pic { width: 115px; height: 145px; object-fit: cover; border-radius: 15px; border: 3px solid var(--piggy); position: absolute; box-shadow: 0 15px 30px rgba(0,0,0,0.7); }
-        .cp1 { transform: rotate(-8deg) translateX(-35px); }
-        .cp2 { transform: rotate(5deg) translateX(35px); z-index: 2; }
+        /* Rose Container */
+        .rose {
+            position: absolute;
+            bottom: 80px;
+            transform-origin: bottom center;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-        .panda-gif { width: 120px; height: 120px; margin-bottom: 15px; filter: drop-shadow(0 0 12px var(--plum)); }
-        h1 { font-family: 'Indie Flower', cursive; color: var(--piggy); font-size: 26px; margin: 10px 0; }
-        p { color: #fce4ec; line-height: 1.6; font-size: 14px; margin-bottom: 25px; }
-        
-        .heart-option { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 77, 109, 0.5); padding: 15px; border-radius: 20px; margin-bottom: 12px; cursor: pointer; }
-        .hidden-msg { display: none; font-weight: 600; color: var(--piggy); font-size: 18px; }
+        .rose.grow {
+            opacity: 1;
+            transform: scale(1);
+        }
 
-        .btn { background: linear-gradient(45deg, var(--rose), var(--piggy)); border: none; padding: 12px 35px; border-radius: 30px; cursor: pointer; color: #3d0019; font-weight: 700; font-size: 16px; box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3); }
-        
-        .slide { display: none; }
-        .active { display: block; animation: liquidFade 1s ease-out; }
-        @keyframes liquidFade { from { opacity: 0; filter: blur(10px); transform: scale(0.9); } to { opacity: 1; filter: blur(0); transform: scale(1); } }
-        
-        .letter { text-align: left; background: rgba(0,0,0,0.4); padding: 22px; border-radius: 25px; border: 1px dashed var(--piggy); max-height: 180px; overflow-y: auto; color: #fff; font-size: 13.5px; line-height: 1.7; }
+        .stem {
+            width: 4px;
+            height: 120px;
+            background: #2e7d32;
+            margin: 0 auto;
+        }
+
+        .flower-head {
+            width: 40px;
+            height: 40px;
+            background: #ff4d6d;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        /* Petal details */
+        .flower-head::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #c9184a;
+            border-radius: 50%;
+            border-top-color: transparent;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            margin-top: 30px;
+            opacity: 0;
+            transition: opacity 2s;
+        }
+
+        .visible { opacity: 1 !important; }
     </style>
 </head>
 <body>
-    <svg width="0" height="0"><defs><clipPath id="heartPath" clipPathUnits="objectBoundingBox"><path d="M0.5,1 C0.5,1 0,0.7 0,0.35 C0,0.15 0.15,0 0.32,0 C0.42,0 0.47,0.05 0.5,0.1 C0.53,0.05 0.58,0 0.68,0 C0.85,0 1,0.15 1,0.35 C1,0.7 0.5,1 0.5,1" /></clipPath></defs></svg>
-    <div id="physics-container"></div>
-    <audio id="bgMusic" loop><source src="https://googleusercontent.com/file_content/1" type="audio/mpeg"></audio>
 
-    <div class="card">
-        <button id="musicToggle" onclick="toggleMusic()">🔇</button>
+    <div class="garden">
+        <div id="rose1" class="rose" style="left: 20px; transition-delay: 0.5s;">
+            <div class="flower-head"></div>
+            <div class="stem"></div>
+        </div>
+        <div id="rose2" class="rose" style="left: 80px; transition-delay: 1.5s;">
+            <div class="flower-head" style="background: #ff758f;"></div>
+            <div class="stem" style="height: 150px;"></div>
+        </div>
+        <div id="rose3" class="rose" style="left: 140px; transition-delay: 2.5s;">
+            <div class="flower-head"></div>
+            <div class="stem"></div>
+        </div>
         
-        <div id="s1" class="slide active">
-            <img src="https://i.postimg.cc/wvfwFHRG/IMG-4846.jpg" class="anime-frame">
-            <h1>For Pratuuu 🐷🌸</h1>
-            <p>I've put my heart into this. Please turn your volume up...</p>
-            <button class="btn" onclick="startApp()">Open ❤️</button>
-        </div>
-        
-        <div id="s2" class="slide">
-            <div class="heart-frame"><img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg"></div>
-            <p>I know I haven't been the easiest to love lately, and for that, I am so sorry...</p>
-            <button class="btn" onclick="go(3)">Continue 🐾</button>
-        </div>
-
-        <div id="s3" class="slide">
-            <div class="heart-frame"><img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg"></div>
-            <h1>Little things...</h1>
-            <div class="heart-option" onclick="reveal(this)"><span>❤️</span><div class="hidden-msg">I need you</div></div>
-            <div class="heart-option" onclick="reveal(this)"><span>💜</span><div class="hidden-msg">I promise to be better</div></div>
-            <div class="heart-option" onclick="reveal(this)"><span>💖</span><div class="hidden-msg">I Love You</div></div>
-            <button class="btn" onclick="go(4)">Next ✨</button>
-        </div>
-
-        <div id="s4" class="slide">
-            <div class="collage-container">
-                <img src="https://i.postimg.cc/VvS63LS7/IMG-2417.jpg" class="collage-pic cp1">
-                <img src="https://i.postimg.cc/NFyMWfyP/IMG-7315.jpg" class="collage-pic cp2">
-            </div>
-            <h1>Our Memories</h1>
-            <button class="btn" onclick="go(5)">My Message 📝</button>
-        </div>
-
-        <div id="s5" class="slide">
-            <div class="letter">
-                <p><strong>Dearest Pratuuu,</strong></p>
-                <p>For hurting you and making you feel upset, I'm truly sorry. I never wanted to be the reason behind your tears.</p>
-                <p>I know I am a bit more complicated than anyone you have ever met. You matter to me more than I always manage to show.</p>
-                <p>I promise to grow, to listen, and to be better for you every single day. Thank you for everything. We will make everything work properly as it was someday.</p>
-                <p>God bless you Pratu❤️</p>
-                <p align="right"><strong>- Dhiruuu</strong></p>
-            </div>
-            <button class="btn" onclick="location.reload()" style="margin-top:20px">Replay ↺</button>
-        </div>
+        <div class="pot-top"></div>
+        <div class="pot"></div>
     </div>
 
+    <h1 id="message">Happy Rose Day, My Love! 🌹</h1>
+
     <script>
-        const music = document.getElementById("bgMusic");
-        const toggleBtn = document.getElementById("musicToggle");
-        const container = document.getElementById('physics-container');
-        const objects = [];
-        let gravity = { x: 0, y: 0 }; 
-
-        function startApp() { 
-            if (typeof DeviceMotionEvent.requestPermission === 'function') {
-                DeviceMotionEvent.requestPermission().then(res => { if(res == 'granted') window.addEventListener('devicemotion', handleMotion); });
-            } else { window.addEventListener('devicemotion', handleMotion); }
-            music.play(); toggleBtn.innerText = "🔊"; go(2); 
-        }
-
-        function handleMotion(e) {
-            gravity.x = -(e.accelerationIncludingGravity.x || 0) * 1.8;
-            gravity.y = (e.accelerationIncludingGravity.y || 0) * 1.8;
-        }
-
-        function createObj() {
-            const el = document.createElement('div');
-            el.className = 'physics-obj';
-            const icons = ['🐷', '🌸', '❤️', '💖', '💝', '🌸', '🐷'];
-            el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-            container.appendChild(el);
-            const obj = { el, x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, vx: 0, vy: 0 };
-            objects.push(obj);
-            if (objects.length > 25) container.removeChild(objects.shift().el);
-        }
-
-        function update() {
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            objects.forEach(o => {
-                const dx = centerX - o.x; const dy = centerY - o.y;
-                o.vx += dx * 0.005 + gravity.x; o.vy += dy * 0.005 + gravity.y;
-                o.vx *= 0.94; o.vy *= 0.94;
-                o.x += o.vx; o.y += o.vy;
-                if (o.x < 10) { o.x = 10; o.vx *= -0.6; }
-                if (o.x > window.innerWidth - 40) { o.x = window.innerWidth - 40; o.vx *= -0.6; }
-                if (o.y < 10) { o.y = 10; o.vy *= -0.6; }
-                if (o.y > window.innerHeight - 40) { o.y = window.innerHeight - 40; o.vy *= -0.6; }
-                o.el.style.transform = `translate(${h.x}px, ${h.y}px)`; // Fixed typo h to o
-                o.el.style.transform = `translate(${o.x}px, ${o.y}px)`;
-            });
-            requestAnimationFrame(update);
-        }
-
-        setInterval(createObj, 1000);
-        update();
-        function toggleMusic() { if (music.paused) { music.play(); toggleBtn.innerText = "🔊"; } else { music.pause(); toggleBtn.innerText = "🔇"; } }
-        function go(id) { document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); document.getElementById('s' + id).classList.add('active'); }
-        function reveal(el) { el.querySelector('span').style.display = 'none'; el.querySelector('.hidden-msg').style.display = 'block'; }
+        window.onload = () => {
+            const roses = document.querySelectorAll('.rose');
+            roses.forEach(rose => rose.classList.add('grow'));
+            
+            setTimeout(() => {
+                document.getElementById('message').classList.add('visible');
+            }, 3500);
+        };
     </script>
 </body>
 </html>
